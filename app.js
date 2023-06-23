@@ -1,24 +1,55 @@
-const bill = document.querySelector('.bill').value;
-const numPeople = document.querySelector('.num_people').value;
-const custom = document.querySelector('.custom-tip');
+// Get the required elements from the DOM
+const billInput = document.getElementById('bill');
+const tipButtons = document.querySelectorAll('.tip');
+const customTipInput = document.getElementById('custom_tip');
+const numPeopleInput = document.getElementById('pple');
+const tipAmountOutput = document.getElementById('tip_amount');
+const totalOutput = document.getElementById('total');
+const resetButton = document.getElementById('reset');
 
-const tip = document.querySelector('.tip-amount');
-const total = document.querySelector('.total');
+// Add event listeners to calculate the tip and total amount
+billInput.addEventListener('input', calculateTip);
+tipButtons.forEach(button => button.addEventListener('click', selectTip));
+customTipInput.addEventListener('input', calculateTip);
+numPeopleInput.addEventListener('input', calculateTip);
+resetButton.addEventListener('click', resetCalculator);
 
-const reset = document.querySelector('#reset');
+// Function to calculate the tip and total amount
+function calculateTip() {
+  const billAmount = parseFloat(billInput.value);
+  const numPeople = parseFloat(numPeopleInput.value);
 
-const errorMessage = document.querySelector('error-msg');
+  // Calculate the selected tip percentage
+  let tipPercentage;
+  if (this.id === 'custom_tip') {
+    tipPercentage = parseFloat(customTipInput.value) || 0;
+  } else {
+    tipPercentage = parseFloat(this.textContent) || 0;
+  }
 
-const tip_1 = document.querySelector('.tip-1');
-const tip_2 = document.querySelector('.tip-2');
-const tip_3 = document.querySelector('.tip-3');
-const tip_4 = document.querySelector('.tip-4');
-const tip_5 = document.querySelector('.tip-5');
+  // Calculate the tip amount per person
+  const tipAmount = (billAmount * (tipPercentage / 100)) / numPeople || 0;
+  tipAmountOutput.textContent = `$${tipAmount.toFixed(2)}`;
 
-const tips = document.querySelectorAll('.tip');
-tips.forEach(tipp => {
-    tipp.addEventListener('click', () => {
-        document.querySelector('.active')?.classList.remove('active');
-        tipp.classList.add('active');
-    });
-});
+  // Calculate the total amount per person
+  const totalAmount = (billAmount / numPeople) + tipAmount || 0;
+  totalOutput.textContent = `$${totalAmount.toFixed(2)}`;
+}
+
+// Function to select the tip button and update the custom tip input
+function selectTip() {
+  tipButtons.forEach(button => button.classList.remove('active'));
+  this.classList.add('active');
+  customTipInput.value = '';
+  calculateTip.call(this);
+}
+
+// Function to reset the calculator
+function resetCalculator() {
+  billInput.value = '';
+  tipButtons.forEach(button => button.classList.remove('active'));
+  customTipInput.value = '';
+  numPeopleInput.value = '';
+  tipAmountOutput.textContent = '$0.00';
+  totalOutput.textContent = '$0.00';
+}

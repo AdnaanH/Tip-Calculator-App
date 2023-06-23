@@ -20,76 +20,79 @@
   </style>
 </head>
 <body>
-  <header>
-    <img src="./logo.svg" alt="logo">
-  </header>
-  <main>
-    <div class="container">
+<header>
+  <img src="./logo.svg" alt="logo">
+</header>
 
-      <div class="left">
-        <div class="biilInput">
+<main>
+  <form action=""></form>
+<!-- USER INPUT SECTION -->
+<section>
+  <div class="u_input">
+        <div class="billing">
           <label for="bill">Bill</label>
-          <input type="number" class="bill" placeholder="0">
+  <!-- INPUT THE TOTAL BILL -->
+          <input type="number" class="bill" placeholder="0" id="bill">
         </div>
-
+  <!-- TIP PERCENTAGE BUTTONS -->
         <div class="tips">
-          <div class="top">
-            <div><p>Select Tip %</p></div>
-            <div class="tpss">
-              <div class="tip tip-5">5%</div>
-              <div class="tip tip-10">10%</div>
-              <div class="tip tip-15">15%</div>
+            <p>Select Tip %</p>
+            <div class="tip_sel">
+                <button class="tip" id="tip_5" onclick="display.value += '5'">5%</button>
+                <button class="tip" id="tip_10" onclick="display.value += '5'">10%</button>
+                <button class="tip" id="tip_15" onclick="display.value += '5'">15%</button>
+                <button class="tip" id="tip_25" onclick="display.value += '5'">25%</button>
+                <button class="tip" id="tip_50" onclick="display.value += '5'">50%</button>
+                <input type="number" id="custom_tip" placeholder="Custom">           
             </div>
-          </div>
-
-          <div class="bottom">
-            <div class="tip tip-25">25%</div>
-            <div class="tip tip-50">50%</div>
-            <div class="custom-tip"><input type="number" id="custom-tip" placeholder="Custom"></div>
-          </div>
         </div>
 
         <div class="people">
-          <div class="labl">
+          <div class="label">
             <label for="num_people">Number of People</label>
-            <label class="error-msg">Can't be zero</label>
+            <label class="error_msg">Can't be zero</label>
           </div>
-          <input type="number" class="num_people" placeholder="0">
+
+  <!-- INPUT THE NUMBER OF PEOPLE BILLED -->
+    
+          <input type="number" class="" id="pple" placeholder="0">
         </div>
+  </div>
+</section>
+<!-- USER OUTPUT SECTION -->
+<section class="u_output">
+  <!-- SHOULD OUTPUT THE TIP AMOUNT PER PERSON -->
+    <div class="output">
+      <div class="label_op">
+        <div class="label-person">
+          <p>Tip Amount<br>
+          <span>/ person</span>
+          </p>
+        </div>
+        <strong id="tip_amount">$0.00</strong>
       </div>
-
-      <div class="right">
-        <div class="output">
-          <div class="label">
-            <div class="label-person">
-              <p>Tip Amount<br>
-              <span>/ person</span>
-            </p>
-            </div>
-            <div class="tip-amount">$0.00</div>
-          </div>
-
-          <div class="label">
-            <div class="label-person">
-              <p>Total <br>
-              <span> / person</span>
-            </p>
-            </div>
-            <div class="total">$0.00</div>
-          </div>
+    <!-- SHOULD OUTPUT THE TOTAL AMOUNT EACH CUSTOMER PAYS -->
+      <div class="label_op">
+        <div class="label-person">
+          <p>Total <br>
+          <span> / person</span>
+          </p>
         </div>
-
-        <div class="btn">
-          <button id="reset">Reset</button>
-        </div>
+        <strong id="total">$0.00</strong>
       </div>
     </div>
-  </main>  
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="www.upandstarttechnologies.com">Adnan Hamisi</a>.
-  </footer>
+  <!-- THIS RESETS THE OUTPUT BACK TO ZERO -->
+    <div class="btn">
+      <button id="reset" onclick="display.value = ''">Reset</button>
+    </div>
+</section>  
+</form>
+</main>  
+<footer class="attribution">
+  Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+  Coded by <a href="www.upandstarttechnologies.com">Adnan Hamisi</a>.
+</footer>
 
-  <script src="./app.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>
