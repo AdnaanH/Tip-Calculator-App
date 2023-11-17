@@ -18,7 +18,7 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 main{
     width: 70%;
@@ -107,8 +107,7 @@ input[type=number] {
 }
 .tip_sel input{
     width: 25%;
-    border: none;
-    outline: none;
+    border: 2px solid var(--Light-grayish-cyan);
     border-radius: 5px;
     font-size: 18px;
     font-weight: 800;
@@ -216,6 +215,9 @@ input[type=number] {
     background-color: var(--Strong-cyan);
 }
 @media screen and (max-width: 800px) {
+    body{
+        height: 80vh;
+    }
     main{
         width: 90%;
         flex-wrap: wrap;
