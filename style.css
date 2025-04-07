@@ -1,4 +1,5 @@
-:root{
+/* CSS Variables */
+:root {
     --Strong-cyan: hsl(172, 67%, 45%);
     --Very-dark-cyan: hsl(183, 100%, 15%);
     --Dark-grayish-cyan: hsl(186, 14%, 43%);
@@ -8,10 +9,13 @@
     --White: hsl(0, 0%, 100%);
     --Red: red;
 }
-*{
+
+/* Global Styles */
+* {
     font-family: 'Space Mono', monospace;
 }
-body{
+
+body {
     position: relative;
     background-color: var(--Light-grayish-cyan);
     display: flex;
@@ -19,42 +23,40 @@ body{
     justify-content: space-around;
     align-items: center;
     height: 100vh;
+    padding: 30px 0;
 }
-main{
+
+main {
     width: 70%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
     background-color: var(--White);
     border-radius: 10px;
-    padding: 10px;
+    padding: 30px;
 }
-section{
-    width: 50%;
-    padding: 20px;
-}
-.u_input{
-    display: flex;
-    flex-direction: column;
-    
-}
-.billing{
+
+/* Input Field Styles */
+.u_input, .billing, .tips, .people, .output {
     display: flex;
     flex-direction: column;
 }
-.billing label{
+
+.billing label, .tips p, .label label {
     font-size: 14px;
     font-weight: 800;
     color: var(--Dark-grayish-cyan);
 }
-.billing input{
-    background: url(./icon-dollar.svg);
+
+/* Billing Inputs */
+.billing input,
+.people input {
+    background-color: var(--Light-grayish-cyan);
     background-repeat: no-repeat;
     background-position: 10px;
-    background-color: var(--Light-grayish-cyan);
     border-radius: 5px;
     outline: none;
-    border: none;
+    border: 2px solid transparent;
     text-align: right;
     padding: 7px 15px;
     font-size: 18px;
@@ -62,38 +64,35 @@ section{
     color: var(--Very-light-grayish-cyan);
     cursor: pointer;
 }
-.billing input:hover{
+
+.billing input:hover,
+.people input:hover {
     border: 2px solid var(--Strong-cyan);
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
+
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
-.tips{
-    display: flex;
-    flex-direction: column;
-}
-.tips p{
-    padding-top: 10px;
-    font-size: 14px;
-    color: var(--Dark-grayish-cyan);
-    font-weight: 800;
-}
-.tip_sel{
+
+/* Tip Section */
+.tip_sel {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    overflow: hidden;
 }
-.tip{
-    width: 30%;
-    margin-bottom: 10px;
+
+.tip {
+    width: 100%;
     background-color: var(--Very-light-grayish-cyan);
-    padding: 7px 10px;
+    padding: 10px 15px;
     font-size: 18px;
     color: var(--White);
     font-weight: 800;
@@ -102,99 +101,98 @@ input[type=number] {
     border: none;
     cursor: pointer;
 }
-.tip:hover{
+
+.tip:hover {
     background-color: var(--Strong-cyan);
 }
-.tip_sel input{
-    width: 25%;
+
+.tip_sel input {
+    width: 100%;
     border: 2px solid var(--Light-grayish-cyan);
+    outline: none;
     border-radius: 5px;
     font-size: 18px;
     font-weight: 800;
     color: var(--Very-light-grayish-cyan);
-    height: 37px;
     padding: 0 10px;
     background-color: var(--Light-grayish-cyan);
     cursor: pointer;
 }
-.tip_sel input:hover{
+
+.tip_sel input:hover {
     border: 2px solid var(--Strong-cyan);
 }
-.people{
+
+/* People Section */
+.people {
     margin-top: 10px;
     display: flex;
     gap: 10px;
     flex-direction: column;
     justify-content: space-between;
 }
-.label{
+
+.label {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.label label{
-    font-size: 14px;
-    font-weight: var(--Light-grayish-cyan);
-    font-weight: 800;
-    color: var(--Dark-grayish-cyan);
-}
-.label label.error_msg{
+
+.label label.error_msg {
     display: none;
     color: var(--Red);
 }
-.people input{
-    background: url(./icon-person.svg);
-    background-repeat: no-repeat;
-    background-position: 10px;
-    background-color: var(--Light-grayish-cyan);
-    outline: none;
-    border: none;
-    text-align: right;
-    padding: 7px 15px;
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--Grayish-cyan);
-    border-radius: 5px;
-    cursor: pointer;
-}
-.people input:hover{
-    border: 2px solid var(--Strong-cyan);
-}
-.people input.error{
+
+.people input.error {
     border: 1px solid var(--Red);
 }
-.u_output{
+
+/* Output Section */
+.u_output {
+    width: 100%;
     background-color: var(--Very-light-grayish-cyan);
-    display: grid;
-    border-radius: 5px;
+    display: block;
+    border-radius: 7px;
 }
-.output{
+
+.output {
     display: flex;
     flex-direction: column;
-    margin: 5px 5px 20px 5px;
+    padding: 30px;
 }
-.label_op{
+
+/* Labels and Output Amount */
+.label_op {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
 }
-.label-person p{
+
+.label-person p {
     font-size: 14px;
     color: var(--White);
     font-weight: 800;
 }
-.label-person span{
+
+.label-person span {
     color: var(--Grayish-cyan);
     font-size: 12px;
     padding-left: 3px;
 }
+
 #tip_amount,
-#total{
+#total {
     font-size: 36px;
     color: var(--Strong-cyan);
 }
-.btn button{
+
+/* Button Styles */
+.btn {
+    padding: 20px;
+}
+
+.btn button {
     width: 100%;
     margin-top: 40px;
     margin-bottom: 10px;
@@ -208,21 +206,171 @@ input[type=number] {
     border-radius: 3px;
     cursor: pointer;
 }
-.btn button:hover{
+
+.btn button:hover {
     background-color: var(--Strong-cyan);
 }
-.active{
+
+.active {
     background-color: var(--Strong-cyan);
 }
+
+/* Responsive Design */
 @media screen and (max-width: 800px) {
-    body{
+    body {
         height: 80vh;
+        padding: 5px;
     }
-    main{
+
+    main {
         width: 90%;
-        flex-wrap: wrap;
+        grid-template-columns: 1fr;
     }
-    section{
+
+    section {
         width: 100%;
     }
+}
+
+/* Dark Mode Styles */
+body.dark {
+    background-color: #1b2b2b;
+    color: var(--White);
+}
+
+body.dark main {
+    background-color: #243333;
+}
+
+body.dark input,
+body.dark .tip,
+body.dark .tip_sel input,
+body.dark .u_output {
+    background-color: #2f3e3e;
+    color: var(--White);
+}
+
+body.dark .btn button {
+    background-color: var(--Dark-grayish-cyan);
+}
+
+body.dark .btn button:hover {
+    background-color: var(--Strong-cyan);
+}
+
+/* Theme Toggle Button */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    margin: 20px auto;
+}
+
+#themeToggle {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--Very-dark-cyan);
+}
+
+/* Transaction Log */
+.transaction-log {
+    width: 70%;
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 14px;
+}
+
+.transaction-log h3 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.transaction-log ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.transaction-log li {
+    margin-bottom: 5px;
+}
+
+.transaction-log {
+    width: 70%;
+    max-width: 600px;
+    margin: 30px auto;
+    font-size: 15px;
+    padding: 10px;
+    background-color: var(--White);
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.transaction-log h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-align: center;
+    color: var(--Very-dark-cyan);
+}
+
+.transaction-log ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.transaction-entry {
+    border-bottom: 1px solid var(--Light-grayish-cyan);
+    padding: 10px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.transaction-entry:last-child {
+    border-bottom: none;
+}
+
+.transaction-entry div {
+    margin-bottom: 2px;
+}
+
+.transaction-entry .time {
+    font-size: 12px;
+    color: var(--Grayish-cyan);
+}
+
+body.dark .transaction-log {
+    background-color: #2c3c3c;
+    color: var(--White);
+    box-shadow: none;
+}
+
+.transactions-container {
+    margin-top: 20px;
+    width: 100%;
+    background: var(--White);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.transactions-container h3 {
+    margin-bottom: 10px;
+    font-weight: 800;
+    color: var(--Very-dark-cyan);
+}
+
+.transaction-entry {
+    border-bottom: 1px solid var(--Light-grayish-cyan);
+    padding: 10px 0;
+}
+
+.transaction-entry:last-child {
+    border-bottom: none;
+}
+
+.transaction-entry p {
+    margin: 4px 0;
 }

@@ -1,92 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <!-- displays site properly based on user's device -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <!-- Favicon-->
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-  <!-- Title-->
-  <title>Frontend Mentor | Tip calculator app</title>
-  <!-- Google fonts Link -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  <!-- Stylesheet Link -->
-  <link rel="stylesheet" type="text/css" href="./style.css">
-  <style>
-    .attribution { font-size: 17px; text-align: center; font-weight: 800;}
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tip Calculator App</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-<header>
-  <img src="./logo.svg" alt="logo">
-</header>
-<main>
-  <form action=""></form>
-<!-- USER INPUT SECTION -->
-<section>
-  <div class="u_input">
-        <div class="billing">
-          <label for="bill">Bill</label>
-  <!-- INPUT THE TOTAL BILL -->
-          <input type="number" class="bill" placeholder="0" id="bill">
-        </div>
-  <!-- TIP PERCENTAGE BUTTONS -->
-        <div class="tips">
-            <p>Select Tip %</p>
-            <div class="tip_sel">
-                <button class="tip" id="tip_5" onclick="display.value += '5'">5%</button>
-                <button class="tip" id="tip_10" onclick="display.value += '5'">10%</button>
-                <button class="tip" id="tip_15" onclick="display.value += '5'">15%</button>
-                <button class="tip" id="tip_25" onclick="display.value += '5'">25%</button>
-                <button class="tip" id="tip_50" onclick="display.value += '5'">50%</button>
-                <input type="number" id="custom_tip" placeholder="Custom">           
-            </div>
-        </div>
+  <header>
+    <img src="./assets/logo.svg" alt="Tip Calculator Logo" />
+    <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+  </header>
 
-        <div class="people">
-          <div class="label">
-            <label for="num_people">Number of People</label>
-            <label class="error_msg">Can't be zero</label>
+  <main>
+    <!-- INPUT SECTION -->
+    <section class="u_input">
+      <div class="billing">
+        <label for="bill">Bill</label>
+        <input type="number" id="bill" placeholder="0" />
+      </div>
+
+      <div class="tips">
+        <p>Select Tip %</p>
+        <div class="tip_sel">
+          <button class="tip" data-value="5">5%</button>
+          <button class="tip" data-value="10">10%</button>
+          <button class="tip" data-value="15">15%</button>
+          <button class="tip" data-value="25">25%</button>
+          <button class="tip" data-value="50">50%</button>
+          <input type="number" class="tip" id="custom_tip" placeholder="Custom" aria-label="Custom Tip" />
+        </div>
+      </div>
+
+      <div class="people">
+        <div class="label">
+          <label for="pple">Number of People</label>
+          <label class="error_msg" id="error">Can't be zero</label>
+        </div>
+        <input type="number" id="pple" placeholder="0" />
+      </div>
+    </section>
+
+    <!-- OUTPUT SECTION -->
+    <section class="u_output">
+      <div class="output">
+        <div class="label_op">
+          <div class="label-person">
+            <p>Tip Amount<br><span>/ person</span></p>
           </div>
+          <strong id="tip_amount">$0.00</strong>
+        </div>
+        <div class="label_op">
+          <div class="label-person">
+            <p>Total<br><span>/ person</span></p>
+          </div>
+          <strong id="total">$0.00</strong>
+        </div>
+      </div>
+      <div class="btn">
+        <button id="reset">Reset</button>
+      </div>
+    </section>
+  </main>
 
-  <!-- INPUT THE NUMBER OF PEOPLE BILLED -->
-    
-          <input type="number" class="" id="pple" placeholder="0">
-        </div>
-  </div>
-</section>
-<!-- USER OUTPUT SECTION -->
-<section class="u_output">
-  <!-- SHOULD OUTPUT THE TIP AMOUNT PER PERSON -->
-    <div class="output">
-      <div class="label_op">
-        <div class="label-person">
-          <p>Tip Amount<br>
-          <span>/ person</span>
-          </p>
-        </div>
-        <strong id="tip_amount">$0.00</strong>
-      </div>
-    <!-- SHOULD OUTPUT THE TOTAL AMOUNT EACH CUSTOMER PAYS -->
-      <div class="label_op">
-        <div class="label-person">
-          <p>Total <br>
-          <span> / person</span>
-          </p>
-        </div>
-        <strong id="total">$0.00</strong>
-      </div>
-    </div>
-  <!-- THIS RESETS THE OUTPUT BACK TO ZERO -->
-    <div class="btn">
-      <button id="reset" onclick="display.value = ''">Reset</button>
-    </div>
-</section>  
-</form>
-</main>  
-<script src="./app.js"></script>
+  <!-- Transaction Log -->
+  <section  class="transaction-log">
+    <h3>Last 5 Transactions</h3>
+    <div id="transaction_log"></div>
+  </section>
+
+  <script src="./app.js"></script>
 </body>
 </html>
